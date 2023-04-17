@@ -12,7 +12,8 @@ pipeline {
             steps {
                 // Build Docker image
                 dir('user-microservice'){
-                    bat 'docker build -t user-microservice:4 .'
+                    bat 'echo "hello"'
+//                     bat 'docker build -t user-microservice:4 .'
                 }
                 
             }
