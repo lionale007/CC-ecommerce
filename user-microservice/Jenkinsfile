@@ -1,0 +1,37 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                // Checkout code from version control system (e.g. Git)
+                git branch: 'main', url: 'https://github.com/ShafiudeenKameel/CC-ecommerce.git'
+            }
+        }
+        stage('Build Docker Image') {
+            steps {
+                // Build Docker image
+                sh 'docker build -t user-microservice ./user-microservice'
+            }
+        }
+        // stage('Run Tests') {
+        //     steps {
+        //         // Run tests for the microservice
+        //         sh 'docker run your-user-microservice npm test'
+        //     }
+        // }
+        stage('Push Docker Image') {
+            steps {
+                // Push Docker image to a container registry (e.g. Docker Hub)
+                sh 'docker push user-microservice'
+            }
+        }
+        stage('Deploy to Kubernetes') {
+            steps {
+                // Deploy the microservice to Kubernetes using kubectl
+                sh 'kubectl apply -f user-microservice-deployment.yaml'
+                sh 'kubectl apply -f user-microservice-service-service.yaml'
+            }
+        }
+    }
+}
