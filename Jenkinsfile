@@ -17,26 +17,29 @@ pipeline {
                 bat 'kubectl apply -f mongodb-service.yaml'
             }
         }
-//         stage('Deploy RabbitMQ') {
-//             steps {
-//                 // Deploy RabbitMQ using kubectl
-//                 bat 'kubectl apply -f rabbitmq-deployment.yaml'
-//                 bat 'kubectl apply -f rabbitmq-service.yaml'
-//             }
-//         }
+        stage('Deploy RabbitMQ') {
+            steps {
+                // Deploy RabbitMQ using kubectl
+                bat 'kubectl apply -f rabbitmq-deployment.yaml'
+                bat 'kubectl apply -f rabbitmq-service.yaml'
+                sleep time: 60, unit: 'SECONDS'
+            }
+        }
         stage('Build and Deploy Microservices') {
             steps {
                 // Build Docker images for each microservice
                 dir('user-microservice'){
                    bat 'docker build -t user-microservice:4 .'
                     bat 'kubectl apply -f user-microservice-deployment.yaml'
-                    bat 'kubectl apply -f user-microservice-service.yaml'   
+                    bat 'kubectl apply -f user-microservice-service.yaml'
+                    sleep time: 60, unit: 'SECONDS'
                 }
 
                 dir('product-microservice'){
                     bat 'docker build -t product-microservice:3 .'
                     bat 'kubectl apply -f product-microservice.deployment.yaml'
                     bat 'kubectl apply -f product-microservice-service.yaml'
+                    sleep time: 60, unit: 'SECONDS'
 
                 }
 
@@ -44,6 +47,7 @@ pipeline {
                     bat 'docker build -t order-microservice:3 .'
                     bat 'kubectl apply -f order-microservice-deployment.yaml'
                     bat 'kubectl apply -f order-microservice-service.yaml'
+                    sleep time: 60, unit: 'SECONDS'
                 }            
             }
         }
@@ -61,7 +65,7 @@ pipeline {
                 parallel {
                     stage('Step 1') {
                         steps {
-                            // Run step 1
+                            // Run step 1sleep time: 300, unit: 'SECONDS'
                             bat 'kubectl port-forward services/user-microservice 7070:7070'
                         }
                     }
