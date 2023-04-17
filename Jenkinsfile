@@ -33,7 +33,7 @@ pipeline {
                     bat 'kubectl apply -f user-microservice-service.yaml'   
                 }
 
-                dir('product-mircoservice'){
+                dir('product-microservice'){
                     bat 'docker build -t product-microservice:3 .'
                     bat 'kubectl apply -f product-microservice.deployment.yaml'
                     bat 'kubectl apply -f product-microservice-service.yaml'
