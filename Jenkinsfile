@@ -59,31 +59,31 @@ pipeline {
 //                 bat 'kubectl port-forward services/order-microservice 9090:9090'
 //             }
 //         }
-        stage('Run Parallel Steps') {
+//         stage('Port Forwarding') {
             
-                // Run steps in parallel within the same stage
-                parallel {
-                    stage('Step 1') {
-                        steps {
-                            // Run step 1sleep time: 300, unit: 'SECONDS'
-                            bat 'kubectl port-forward services/user-microservice 7070:7070'
-                        }
-                    }
-                    stage('Step 2') {
-                        steps {
-                            // Run step 2
-                            bat 'kubectl port-forward services/product-microservice 8080:8080'
-                        }
-                    }
-                    stage('Step 3') {
-                        steps {
-                            // Run step 3
-                            bat 'kubectl port-forward services/order-microservice 9090:9090'
-                        }
-                    }
-                }
+//                 // Run steps in parallel within the same stage
+//                 parallel {
+//                     stage('Port 7070') {
+//                         steps {
+//                             // Run step 1sleep time: 300, unit: 'SECONDS'
+//                             bat 'kubectl port-forward services/user-microservice 7070:7070'
+//                         }
+//                     }
+//                     stage('Port 8080') {
+//                         steps {
+//                             // Run step 2
+//                             bat 'kubectl port-forward services/product-microservice 8080:8080'
+//                         }
+//                     }
+//                     stage('Port 9090') {
+//                         steps {
+//                             // Run step 3
+//                             bat 'kubectl port-forward services/order-microservice 9090:9090'
+//                         }
+//                     }
+//                 }
             
-        }
+//         }
     }
 
 //     post {
