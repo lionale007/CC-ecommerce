@@ -11,10 +11,10 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 // Build Docker image
-                bat 'dir'
+                
                 dir('user-microservice'){
-                    bat 'echo "hello"'
-//                     bat 'docker build -t user-microservice:4 .'
+                    
+                    bat 'docker build -t user-microservice:4 .'
                 }
                 
             }
@@ -31,12 +31,14 @@ pipeline {
 //                 sh 'docker push user-microservice'
 //             }
 //         }
-//         stage('Deploy to Kubernetes') {
-//             steps {
-//                 // Deploy the microservice to Kubernetes using kubectl
-//                 sh 'kubectl apply -f user-microservice-deployment.yaml'
-//                 sh 'kubectl apply -f user-microservice-service-service.yaml'
-//             }
-//         }
+        stage('Deploy to Kubernetes') {
+            steps {
+                dir('user-microservices'){
+                    // Deploy the microservice to Kubernetes using kubectl
+                    bat 'kubectl apply -f user-microservice-deployment.yaml'
+                    bat 'kubectl apply -f user-microservice-service-service.yaml'
+                } 
+            }
+        }
     }
 }
