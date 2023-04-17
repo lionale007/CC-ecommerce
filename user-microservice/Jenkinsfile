@@ -33,7 +33,7 @@ pipeline {
 //         }
         stage('Deploy to Kubernetes') {
             steps {
-                dir('user-microservices'){
+                dir('user-microservice'){
                     // Deploy the microservice to Kubernetes using kubectl
                     bat 'kubectl apply -f user-microservice-deployment.yaml'
                     bat 'kubectl apply -f user-microservice-service-service.yaml'
