@@ -11,15 +11,15 @@ pipeline {
         stage('Deploy MongoDB') {
             steps {
                 // Deploy MongoDB using kubectl
-                bat 'kubectl apply -f mongodb/deployment.yaml'
-                bat 'kubectl apply -f mongodb/service.yaml'
+                bat 'kubectl apply -f mongodb-deployment.yaml'
+                bat 'kubectl apply -f mongodb-service.yaml'
             }
         }
         stage('Deploy RabbitMQ') {
             steps {
                 // Deploy RabbitMQ using kubectl
-                bat 'kubectl apply -f rabbitmq/deployment.yaml'
-                bat 'kubectl apply -f rabbitmq/service.yaml'
+                bat 'kubectl apply -f rabbitmq-deployment.yaml'
+                bat 'kubectl apply -f rabbitmq-service.yaml'
             }
         }
         stage('Build and Deploy Microservices') {
