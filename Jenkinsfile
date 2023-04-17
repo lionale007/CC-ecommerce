@@ -57,10 +57,10 @@ pipeline {
         }
     }
 
-    post {
-        always {
-            // Clean up port forwarding processes
-            bat 'pkill -f "kubectl port-forward"'
-        }
-    }
+//     post {
+//         always {
+//             // Clean up port forwarding processes
+//             bat 'pkill -f "kubectl port-forward"'
+//         }
+//     }
 }
