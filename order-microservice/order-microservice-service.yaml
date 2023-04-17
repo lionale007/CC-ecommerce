@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: order-microservice
+spec:
+  selector:
+    app: order-microservice
+  ports:
+    - protocol: TCP
+      port: 9090
+      targetPort: 9090
+  type: NodePort

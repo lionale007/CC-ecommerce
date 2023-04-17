@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: user-microservice
+spec:
+  selector:
+    app: user-microservice
+  ports:
+    - protocol: TCP
+      port: 7070
+      targetPort: 7070
+  type: NodePort

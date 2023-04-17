@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: order-microservice
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: order-microservice
+  template:
+    metadata:
+      labels:
+        app: order-microservice
+    spec:
+      containers:
+        - name: order-microservice
+          image: order-microservice:3
+          ports:
+            - containerPort: 9090
+          env:
+            - name: MONGODB_HOST
+              value: mongodb  # Use the hostname of the mongodb service
+            - name: MONGODB_PORT
+              value: "27017"  # Use the port of the mongodb service
+            - name: RABBITMQ_HOST
+              value: rabbitmq  # Use the hostname of the rabbitmq service
+            - name: RABBITMQ_PORT
+              value: "5672"  # Use the port of the rabbitmq service
