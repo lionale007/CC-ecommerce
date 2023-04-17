@@ -5,7 +5,7 @@ pipeline {
         stage('Clone Repository') {
             steps {
                 // Clone the GitHub repository
-                git 'https://github.com/ShafiudeenKameel/CC-ecommerce.git'
+                 git branch: 'main', url: 'https://github.com/ShafiudeenKameel/CC-ecommerce.git'
             }
         }
         stage('Deploy MongoDB') {
