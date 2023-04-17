@@ -56,7 +56,7 @@ pipeline {
 //             }
 //         }
         stage('Run Parallel Steps') {
-            steps {
+            
                 // Run steps in parallel within the same stage
                 parallel {
                     stage('Step 1') {
@@ -78,7 +78,7 @@ pipeline {
                         }
                     }
                 }
-            }
+            
         }
     }
 
