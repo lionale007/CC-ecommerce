@@ -1,5 +1,5 @@
-# Cloud Computing Project - UE20CS351
-## Problem 6
+# E-COM DOCK
+
 ### Harsh Hardikar | Hitesh Reddy | Krish Mungra | Mayank Singh
 --- 
 # Building an E-commerce Microservices Application on Cloud using Docker, Kubernetes, Jenkins, and Git
